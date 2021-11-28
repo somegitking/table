@@ -1,0 +1,90 @@
+<!--1. 테이블에 행 추가할 수 있는가? ->OK-->
+<!--2. 테이블에 행 삭제할 수 있는가? ->OK-->
+<!--3. 테이블에서 체크박스를 만들 수 있는가? ->OK-->
+<!--4. 테이블에서 체크박스 클릭을 확인 할수 있는가? -->
+<!--5. 테이블에서 체크박스 클릭된 것을 삭제할 수 있는가 -->
+<!--6. cells[i].firstChild.checked의 의미에 대해서 완전히 이해하자-->
+
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>테이블 추가</title>
+</head>
+
+<body>
+<style>
+    table{
+        width: 30%;
+        border: 1px solid #444444;
+    }
+    th, td{
+        border: 1px solid #444444;
+
+    }
+
+</style>
+
+
+<button id = "addBtn" onclick="addRow()">행추가 버튼</button>
+<button id = "removeBtn" onclick="removeRow(-1)">행삭제 버튼</button>
+<button id = "checkRemoveBtn" onclick="removeCheck()">체크해서 삭제 버튼</button>
+
+
+<table id = "tbl">
+    <tr><th>이름</th><th>나이</th><th>주소</th><th>전화번호</th><th>번호</th><th>삭제</th></tr>
+
+</table>
+
+<script>
+
+let i = 0;
+function addRow(){
+    const table = document.getElementById("tbl")
+
+    const newRow = table.insertRow()
+
+    const newCell0 = newRow.insertCell(0)
+    const newCell1 = newRow.insertCell(1)
+    const newCell2 = newRow.insertCell(2)
+    const newCell3 = newRow.insertCell(3)
+    const newCell4 = newRow.insertCell(4)
+    const newCell5 = newRow.insertCell(5)
+
+    newCell0.innerText = "제인리";
+    newCell1.innerText = "41";
+    newCell2.innerText = "인천 계양";
+    newCell3.innerText = "010-1234-1234";
+    newCell4.innerText = i;
+    newCell5.innerHTML = `<input type="checkbox" name="checkbox"/>`;
+    i++
+    console.log(i)
+}
+
+function removeRow(rownum){
+    // table element 찾기
+    const table = document.getElementById("tbl");
+    // 행(Row) 삭제
+    const newRow = table.deleteRow(rownum);
+}
+
+function removeCheck(){
+    const table = document.getElementById("tbl");
+    const lastRow = table.rows.length
+
+    console.log("asdf")
+        // getElementsByTagName("tr")을 이용해서 tag가 "tr"인 모든 것들을 배열로 받는다.
+        // for문을 돌면서 각 "tr"라인의 cells[5].firstChild가 check되어 있는지 확인
+        // 체크가 되어 있다면 deleteRow를 이용해서 삭제 한다.
+
+    for (let i = 0; i < lastRow; i++) {
+        if(document.getElementsByTagName("tr")[i].cells[5].firstChild.checked){
+            table.deleteRow(i)
+
+        }
+    }
+}
+</script>
+</body>
+</html>

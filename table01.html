@@ -1,0 +1,55 @@
+<!--table	table전체를 감싸는 태그-->
+<!--caption	table의 제목이나 설명을 작성하는 태그. 테이블 가로폭의 가운데 오는 것이 기본-->
+<!--tr	테이블의 행을 의미하는 태그. 자손으로 th나 td가 반드시 있어야 한다.-->
+<!--th	테이블의 제목 셀(칸)을 의미하는 태그. 부모인 tr안에 있어야 한다.-->
+<!--css기본값은 글자가 굵게 처리되고 셀에서 가로 가운데 정렬.-->
+<!--td	테이블의 일반 셀(칸)을 의미하는 태그. 부모인 tr안에 있어야 한다.-->
+<!--css기본값: 왼쪽정렬-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        width: 30%;
+        border: 1px solid #444444;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #444444;
+    }
+</style>
+
+<body>
+
+<table>
+        <tr>
+            <th>시간</th><th>항공사</th><th>편명</th>
+        </tr>
+        <tr>
+            <td>시간</td><td>항공사</td><td>편명</td>
+        </tr>
+        <tr>
+            <td>시간</td><td>항공사</td><td>편명</td>
+        </tr>
+    <tr>
+        <td>시간</td><td>항공사</td><td>편명</td>
+    </tr>
+    <tr>
+        <td>시간</td><td>항공사</td><td>편명</td>
+    </tr>
+    <tr>
+        <td>시간</td><td>항공사</td><td>편명</td>
+    </tr>
+    <tr>
+        <td>시간</td><td>항공사</td><td>편명</td>
+    </tr>
+
+
+</table>
+
+</body>
+</html>

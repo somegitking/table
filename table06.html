@@ -1,0 +1,114 @@
+<!--1. 선택한 것만 삭제하기 작동 안하고 있음-->
+<!--2. 여러개 선택해서 삭제하면 선택한 모두가 삭제되는게 아니라 일부만 삭제됨-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  table{
+    width: 40%;
+    border: 1px solid black;
+  }
+  th, td {
+    border: 1px solid black;
+
+  }
+</style>
+
+
+<body>
+
+<button onclick = "addRow()">줄추가</button>
+<button onclick = "removeRow()">줄삭제</button>
+<button onclick = "removeSelected()">선택삭제</button>
+
+<!--<table >-->
+<!--  <tr><th>삭제</th><th>번호</th><th>이름</th><th>나이</th><th>주소</th><th>전화번호</th></tr>-->
+
+<!--</table>-->
+
+
+
+<table id = "tbl">
+  <tr><th>삭제</th><th>번호</th><th>이름</th><th>나이</th><th>주소</th><th>전화번호</th></tr>
+</table>
+
+
+<script>
+  let i =0
+  function addRow(){
+    const table = document.getElementById("tbl")
+
+    const newRow = table.insertRow()
+
+    const newCell0 = newRow.insertCell()
+    const newCell1 = newRow.insertCell()
+    const newCell2 = newRow.insertCell()
+    const newCell3 = newRow.insertCell()
+    const newCell4 = newRow.insertCell()
+    const newCell5 = newRow.insertCell()
+
+
+    newCell0.innerHTML = `<input type = "checkbox" name = "checkbox" />`
+    newCell1.innerText = `${i}`
+    newCell2.innerText = "조자룡"
+    newCell3.innerText = "41"
+    newCell4.innerText = "인천 계양"
+    newCell5.innerText = "010-1234-1234"
+
+    i++
+
+
+  }
+
+  function removeRow(){
+    const table = document.getElementById("tbl")
+
+    const removeRow = table.deleteRow(-1)
+
+    // deleteRom(i) 옵셥
+    // i = -1 ->마지막 행부터 삭제
+    // i = 0  ->첫 행부터 삭제(th 부터 삭제)
+    // i = 1 ->첫 행부터 삭제(th 다음행 부터)
+
+    //마지막 행 삭제 금지하는 로직 구현해 보기
+
+
+
+  }
+  function removeSelected(){
+
+    const table = document.getElementById("tbl")
+
+    let lastRow = table.rows.length
+
+    for (let j = 0; j < lastRow; j++) {
+
+      // getElementsByTagName("tr")을 이용해서 tag가 "tr"인 모든 것들을 배열로 받는다.
+      // for문을 돌면서 각 "tr"라인의 cells[5].firstChild가 check되어 있는지 확인
+      // 체크가 되어 있다면 deleteRow를 이용해서 삭제 한다.
+
+
+      if(document.getElementsByTagName("tr")[j].cells[0].firstChild.checked){
+        table.deleteRow(j)
+      }
+
+      //복수 개 체크박스를 선택할 경우 선택된 모두가 삭제 되지 않고 일부만 삭제 되는 기능 개선
+
+    }
+
+  }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
