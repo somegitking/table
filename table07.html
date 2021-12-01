@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<style media="screen">
+  table{
+    width: 30%;
+    border: 1px solid black;
+  }
+  tr, td{
+        border: 1px solid black;
+
+  }
+
+</style>
+
+
+
+
+<table id = 'tbl'>
+  <tr><td>번호</td><td>체크박스</td></tr>
+  <tr><td>1</td><td><input type="checkbox" data-idx = 1></td></tr>
+  <tr><td>2</td><td><input type="checkbox" data-idx = 2></td></tr>
+  <tr><td>3</td><td><input type="checkbox" data-idx = 3></td></tr>
+  <tr><td>4</td><td><input type="checkbox" data-idx = 4></td></tr>
+</table>
+
+ <!-- menuList.addEventListener("click", (e)=> { -->
+
+
+<script>
+
+function check(){
+
+  let arr = [] //행번호를 배열에 기록
+  const table = document.querySelector("#tbl") //테이블을 선택. 테이블에 발생하는 이벤트에 대해서 처리
+
+  table.addEventListener('click', (e)=>{ //테이블에서 클릭이 발생하면
+    const target = e.target;             //클릭이된 엘리먼트를 파악
+    const idx = target.getAttribute("data-idx") //파악된 엘리먼트의 data-idx 값 추출
+
+    if(idx === null){ //input element 이외에 다른게 클릭 되면 null을 반환됨. 그걸 방지함
+
+    }
+
+//배열.includes(idx) ->idx 값이 배열에 있으면 true, 없으면 false
+
+    else if(arr.includes(idx)){
+     arr = arr.filter( a => a !== idx )
+      console.log(arr);
+
+    }
+
+    else{ //배열에 없으면 배열에 추가
+      arr.push(idx)
+      console.log(arr)
+    }
+
+
+
+    // 1. 번호가 있는지 확인
+    // 2. 없으면 배열에 기록
+    // 3. 있으면 배열에서 삭제
+    // 4. 삭제 버튼 누르면 배열에 기록된 열 삭제
+
+
+  }, false)
+}
+check()
+
+
+
+</script>
+
+
+
+
+  </body>
+</html>
